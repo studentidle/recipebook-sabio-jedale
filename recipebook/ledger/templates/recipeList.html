@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <title>"Recipe Book"</title>
-</head>
+{% extends 'base.html' %} {% load static %}
+{% block title %} Recipe Book {% endblock %}
 
-<body>
-    <h1> Recipe Book </h1>
+{% block content %}
+    <h1> Recipe List </h1>
     <ul>
-        {% for task in recipes%}
-            <li><a href="{{task.link}}">{{task.name}}</a></li>
+        {% for item in recipes%}
+            <li><h2><a href='/recipe/{{ forloop.counter }}' >{{item.name}}</a></h2></li>
         {% endfor %}
     <ul>
-</body> 
-</html>
+{% endblock %}

@@ -1,14 +1,17 @@
-<html lang="en-US">
-<head>
-    <title>"Recipe Book"</title>
-</head>
+{% extends 'base.html' %} {% load static %}
 
-<body>
-    <h1> Recipe Book </h1>
-    <ul>
-        {% for task in ingredients%}
-            <li>{{task.name}}: {{task.quantity}}</li>
-        {% endfor %}
-    <ul>
-</body> 
-</html>
+{% block title %} {{ recipe }} {% endblock %}
+{% block content %}
+    <article>
+        <h1>{{ recipe }}</h1>
+        <h2>Ingredients</h2>
+        <ul>
+            {% for ingredientTracker in recipe_ingredients%}
+            <li> {{ ingredientTracker.ingredient.name }} : {{ ingredientTracker.quantity }} 
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+    <a href='/recipe/list' >return to Recipe List</a>
+
+{% endblock %}
