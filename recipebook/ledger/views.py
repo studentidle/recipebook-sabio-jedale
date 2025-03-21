@@ -2,6 +2,12 @@ from django.shortcuts import render, HttpResponse
 from .models import Recipe, RecipeIngredient
 from django.contrib.auth.decorators import login_required
 
+def home(request):
+    '''
+        for viewing homepage of the website
+    '''
+    return render(request, 'home.html')
+
 @login_required
 def recipeList(request):
     '''
