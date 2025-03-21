@@ -27,6 +27,10 @@ class RecipeIngredientAdmin(admin.ModelAdmin):
     list_display = ('recipe', 'ingredient', 'quantity', )
     list_filter = ('recipe', 'ingredient', )
 
+class ProfileInline(admin.StackedInline):
+	model = Profile
+	can_delete = False
+
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
