@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from .models import Recipe, RecipeIngredient
 from django.contrib.auth.decorators import login_required
 
