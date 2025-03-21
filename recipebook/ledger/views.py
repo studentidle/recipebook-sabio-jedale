@@ -32,7 +32,7 @@ def recipe(request, id):
     }
     return render(request, "recipe.html", context)
 
-def redirect(request):
+def redirectToRecipeList(request):
     '''
         redirect to recipe-list after loggin in.
     '''
