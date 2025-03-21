@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Ingredient, Recipe, RecipeIngredient, Profile 
+from django.contrib.auth.models import User
 
 class IngredientAdmin(admin.ModelAdmin):
     '''
@@ -37,4 +38,6 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
-admin.site.register(Profile)
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
