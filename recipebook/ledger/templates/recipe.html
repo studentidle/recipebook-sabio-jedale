@@ -4,9 +4,8 @@
 {% block content %}
     <article>
         <h1>{{ recipe }}</h1>
-        <h2>Name: {{ recipe.name }}</h2>
-        <h4>Author: {{ recipe.author }}</h4>
-        <p>Created on: {{ recipe.createdOn }} | Last updated on: {{ recipe.updatedOn }} </p>
+        <h4> Author: {{ recipe.author }}</h4>
+        <p> Created on: {{ recipe.createdOn }} | Last updated on: {{ recipe.updatedOn }} </p>
         <h2>Ingredients</h2>
         <ul>
             {% for ingredientTracker in recipe_ingredients%}
