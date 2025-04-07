@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Recipe, RecipeIngredient
+from .models import Recipe, RecipeIngredient, RecipeImage, Ingredient, Profile
 from django.contrib.auth.decorators import login_required
 
 def home(request):
