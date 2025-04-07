@@ -95,4 +95,24 @@ def addIngredient(request):
     
     return render(request, 'addIngredient.html', context)
 
+@login_required
+def addImage(request,num):
+    
+    if request.method == 'POST':
+        imageForm = RecipeImageForm(request.POST, request.FILES)
+        
+        if imageForm.is_valid():
+            image = imageForm.save(commit=False)
+            recipe = Recipe.objects.get(id=num)
+            image.recipe = recipe
+            image.save()
+            recipe.save()
+            return redirect('ledger:getRecipe', num)
+    else:
+        imageForm = RecipeImageForm()
+    
+    context = {
+        'image': imageForm, 
+    }
 
+    return render(request, 'addImage.html', context)
