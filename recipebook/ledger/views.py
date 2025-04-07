@@ -76,4 +76,23 @@ def addRecipe(request):
     
     return render(request, 'addRecipe.html', context)
 
+@login_required
+def addIngredient(request):
+
+    if request.method == 'POST':
+        ingredientForm = IngredientForm(request.POST)
+        
+        if ingredientForm.is_valid():
+                ingredientForm.save()
+                return redirect('ledger:addRecipe')
+            
+    else:
+        ingredientForm = IngredientForm()
+    
+    context = {
+        'ingredient': ingredientForm, 
+    }
+    
+    return render(request, 'addIngredient.html', context)
+
 
