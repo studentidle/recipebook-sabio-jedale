@@ -3,18 +3,55 @@
 
 {% block content %}
     {{ block.super }}
+    
     <h2>Recipe</h2>
-    <form method="POST">
+    <form method="POST" class="mb-4">
         {% csrf_token %}
         {{ recipe.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-success">💾 Save</button>
     </form>
     
-    <h2>RecipeIngredient</h2>
-    <form method="POST">
+    <h2>Recipe Ingredient</h2>
+    <form method="POST" class="mb-3">
         {% csrf_token %}
         {{ recipeIngredient.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-success">💾 Save</button>
     </form>
-    <a href="{% url 'ledger:addIngredient' %}" class="btn btn-primary">Add Ingredient</a>
+
+    <!-- Add Ingredient Button -->
+    <div class="text-end mt-4">
+        <a href="{% url 'ledger:addIngredient' %}" class="btn btn-pink rounded-pill shadow-sm px-4 py-2 fw-bold">
+            ➕ Add Ingredient
+        </a>
+    </div>
+
+    <!-- Return to Recipe List Button -->
+    <div class="text-end mt-4">
+        <a href="/recipe/list" class="btn btn-secondary rounded-pill shadow-sm px-4 py-2 fw-bold">
+            🔙 Return to Recipe List
+        </a>
+    </div>
+
+    <style>
+        .btn-pink {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+        }
+
+        .btn-pink:hover {
+            background-color: #ff85c1;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+    </style>
+
 {% endblock %}
