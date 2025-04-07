@@ -45,7 +45,7 @@ def addRecipe(request):
         
         if recipeForm.is_valid(): 
                 recipe = recipeForm.save(commit=False)
-                profile = Profile.objects.get(user = request.user)
+                profile, created = Profile.objects.get_or_create(user=request.user)
                 recipeName = recipeForm.cleaned_data.get('name')
 
                 if Recipe.objects.filter(name__iexact=recipeName, author=profile).exists():
@@ -107,7 +107,7 @@ def addImage(request,num):
             image.recipe = recipe
             image.save()
             recipe.save()
-            return redirect('ledger:getRecipe', num)
+            return redirect('ledger:recipe', num)
     else:
         imageForm = RecipeImageForm()
     

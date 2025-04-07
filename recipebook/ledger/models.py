@@ -11,7 +11,7 @@ class Profile(models.Model):
     bio = models.CharField(max_length=255)
     
     def __str__(self):
-        return f'{self.name}'
+        return self.user.username
     
 class Ingredient(models.Model):
     '''
@@ -33,6 +33,13 @@ class Recipe(models.Model):
     
     def __str__(self):
         return f'{self.name}'
+    
+    def get_absolute_url(self):
+        return reverse('ledger:recipeList',args=[self.pk])
+    
+    class Meta:
+        ordering = ['name']
+        constraints = [models.UniqueConstraint(fields=['name','author'], name='uniqueNamePerAuthor')]
 
 class RecipeIngredient(models.Model):
     '''
