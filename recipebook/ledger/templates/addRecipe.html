@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {{ block.super }}
+    <h2>Recipe</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ recipe.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    
+    <h2>RecipeIngredient</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ recipeIngredient.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'ledger:addIngredient' %}" class="btn btn-primary">Add Ingredient</a>
+{% endblock %}
