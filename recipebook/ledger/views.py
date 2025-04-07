@@ -37,7 +37,9 @@ def recipe(request, id):
 
 @login_required
 def addRecipe(request):
-
+    '''
+        add creating recipes in the database
+    '''
     if request.method == 'POST':
 
         recipeForm = RecipeForm(request.POST)
@@ -78,6 +80,9 @@ def addRecipe(request):
 
 @login_required
 def addIngredient(request):
+    '''
+        for creating ingredients in the database
+    '''
 
     if request.method == 'POST':
         ingredientForm = IngredientForm(request.POST)
@@ -97,7 +102,9 @@ def addIngredient(request):
 
 @login_required
 def addImage(request,num):
-    
+    '''
+        for uploading images in the database
+    '''
     if request.method == 'POST':
         imageForm = RecipeImageForm(request.POST, request.FILES)
         
