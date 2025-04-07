@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Recipe, RecipeIngredient, RecipeImage, Profile
+from .forms import RecipeForm, RecipeIngredientForm, IngredientForm, RecipeImageForm
 from django.contrib.auth.decorators import login_required
 
 def home(request):
