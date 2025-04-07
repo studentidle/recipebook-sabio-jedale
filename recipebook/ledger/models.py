@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
@@ -51,6 +52,9 @@ class RecipeImage(models.Model):
     image = models.ImageField(upload_to='images/', null=False)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     description = models.TextField(max_length=255)
+    
+    def get_absolute_url(self):
+        return reverse('ledger:addImage',args=[self.recipe.pk])
     
     def __str__(self):
         return f'{self.recipe}'
