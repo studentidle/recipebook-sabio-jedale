@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Recipe, RecipeIngredient, RecipeImage, Ingredient, Profile
+from .models import Recipe, RecipeIngredient, RecipeImage, Profile
 from django.contrib.auth.decorators import login_required
 
 def home(request):
@@ -26,8 +26,12 @@ def recipe(request, id):
     '''
     recipe = Recipe.objects.get(id=id)
     recipeIngredients = RecipeIngredient.objects.filter(recipe=recipe)
+    images = RecipeImage.objects.filter(recipe=recipe)
     context = {
         'recipe_ingredients': recipeIngredients,
         'recipe': recipe,
+        'images': images,
     }
     return render(request, "recipe.html", context)
+
+
