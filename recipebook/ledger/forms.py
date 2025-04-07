@@ -15,3 +15,8 @@ class RecipeIngredientForm(forms.ModelForm):
     class Meta:
         model = RecipeIngredient
         fields = ['recipe','ingredient', 'quantity']
+
+class RecipeImageForm(forms.ModelForm):
+    class Meta:
+        model = RecipeImage
+        fields = ['image','description']
